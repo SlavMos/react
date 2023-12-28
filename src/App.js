@@ -1,17 +1,18 @@
 import "./App.css";
-import Content from "./Components/Profile/Profile";
+
 import Header from "./Components/Header/Header";
 import Nav from "./Components/Nav/Nav";
 import Profile from "./Components/Profile/Profile";
+import Dialogs from "./Components/Dialogs/DIalogs";
 
 const App = () => {
   return (
     <div className="app-wriper">
       <Header />
       <Nav />
-      <Profile />
+      <Dialogs />
+      {/* <Profile /> */}
     </div>
   );
 };
-
 export default App;

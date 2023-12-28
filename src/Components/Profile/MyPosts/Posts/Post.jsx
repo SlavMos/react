@@ -3,10 +3,10 @@ import s from "./Posts.module.css";
 
 const Post = (props) => {
   return (
-    <div className="s.item">
+    <div className={s.item}>
       {props.message}
       <div>
-        <span>like</span>
+        <span>like {props.likesCount}</span>
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
 import React from "react";
 
 import s from "./Profile.module.css";
-import MyPost from "./MyPosts/MyPosts";
+import MyPost from "./MyPosts/MyPost";
+
 const Profile = () => {
   return (
     <div className={s.profile}>
