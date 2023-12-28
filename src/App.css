@@ -11,3 +11,8 @@
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
 }
+
+.app-wriper-content {
+  grid-area: c;
+  background-color: rgb(124, 204, 180);
+}
