@@ -1,19 +1,17 @@
 import React from "react";
 import s from "./MyPosts.module.css";
-import Posts from "./Posts/Posts";
+import Post from "./Posts/Post";
 
 const MyPost = () => {
   return (
     <div>
       posts
       <div>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <textarea name="" id="" cols="15" rows="10"></textarea>
         <button>Add post</button>
       </div>
-      <Posts />
-      <Posts />
-      <Posts />
-      <Posts />
+      <Post message="Hello how are you" />
+      <Post message="Hello  are you" />
     </div>
   );
 };
