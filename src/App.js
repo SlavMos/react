@@ -1,10 +1,10 @@
 import "./App.css";
+import "./reset.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import Nav from "./Components/Nav/Nav";
 import Profile from "./Components/Profile/Profile";
 import Dialogs from "./Components/Dialogs/DIalogs";
-
 const App = () => {
   return (
     <BrowserRouter>
