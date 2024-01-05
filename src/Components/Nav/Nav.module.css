@@ -5,6 +5,7 @@
 
 .item {
   color: black;
+  margin-bottom: 5px;
 }
 .active {
   color: bisque;
