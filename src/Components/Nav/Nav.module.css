@@ -3,6 +3,9 @@
   background-color: rgb(182, 54, 54);
 }
 
-.item a {
-  color: rgb(150, 172, 192);
+.item {
+  color: black;
+}
+.active {
+  color: bisque;
 }
