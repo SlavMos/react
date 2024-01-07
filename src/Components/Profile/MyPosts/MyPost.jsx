@@ -5,7 +5,6 @@ import Post from "./Posts/Post";
 const MyPost = () => {
   let posData = [
     { id: 0, messages: "Hello how are you", likesCount: 1 },
-
     { id: 1, messages: "Hyyyy,okay", likesCount: 15 },
   ];
 
