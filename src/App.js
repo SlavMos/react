@@ -6,7 +6,7 @@ import Nav from "./Components/Nav/Nav";
 import Profile from "./Components/Profile/Profile";
 import Dialogs from "./Components/Dialogs/DIalogs";
 import News from "./Components/News/News";
-const App = () => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className="app-wriper">
@@ -16,9 +16,17 @@ const App = () => {
           <Routes>
             {" "}
             {/* Роуты используем для загрузки новой страницы (ет переключаться по ссылкам)*/}
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/" element={<Profile />} />
-            <Route path="/dialogs/*" element={<Dialogs />} />
+            <Route path="/profile" element={<Profile posts={props.posts} />} />
+            <Route path="/" element={<Profile posts={props.posts} />} />
+            <Route
+              path="/dialogs/*"
+              element={
+                <Dialogs
+                  dialogsData={props.dialogsData}
+                  messegesData={props.messegesData}
+                />
+              }
+            />
             <Route path="/news" element={<News />} />
           </Routes>
         </div>
