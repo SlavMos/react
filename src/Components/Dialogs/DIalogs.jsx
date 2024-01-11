@@ -5,12 +5,12 @@ import Message from "./Message/Message";
 
 const Dialogs = (props) => {
   console.log(props);
-  let dialogsElement = props.dialogsData.map((dialog) => (
+  let dialogsElement = props.state.dialogsData.map((dialog) => (
     <DialogItem name={dialog.name} id={dialog.id} /> //map. метод который превращает массив в новый массив,сделали для того что бы каждый раз не добавляли компонент
   ));
 
-  let messegesElement = props.messegesData.map((messeg) => (
-    <Message message={messeg.message} />
+  let messegesElement = props.state.messegesData.map((messeg) => (
+    <Message message={messeg.message} /> // <Message message={messeg.message} /> message statin danninerun michi messagne/messegna mapin hamare
   ));
 
   return (

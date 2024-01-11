@@ -16,16 +16,17 @@ const App = (props) => {
           <Routes>
             {" "}
             {/* Роуты используем для загрузки новой страницы (ет переключаться по ссылкам)*/}
-            <Route path="/profile" element={<Profile posts={props.posts} />} />
-            <Route path="/" element={<Profile posts={props.posts} />} />
+            <Route
+              path="/profile"
+              element={<Profile state={props.state.profilePage} />}
+            />
+            <Route
+              path="/"
+              element={<Profile state={props.state.profilePage} />}
+            />
             <Route
               path="/dialogs/*"
-              element={
-                <Dialogs
-                  dialogsData={props.dialogsData}
-                  messegesData={props.messegesData}
-                />
-              }
+              element={<Dialogs state={props.state.messagesPage} />}
             />
             <Route path="/news" element={<News />} />
           </Routes>
