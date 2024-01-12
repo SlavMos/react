@@ -12,7 +12,7 @@ const MyPost = (props) => {
   let addPost = () => {
     //создаем функцию которую поставим на баттон(onclick) что бы она выполнилась при нажатии
     let text = newPostElement.current.value; // ПОКАЗЫВАЕТ ЗНАЧЕНИЕ ТЕКСТАРЕА
-    alert(text);
+    props.addPost(text); // прокинули через state функцию которая добавляет посты(то что пишем в let text добавляеется в функцию из state)
   };
 
   return (

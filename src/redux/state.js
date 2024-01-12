@@ -25,4 +25,14 @@ let state = {
   },
 };
 
+export let addPost = (postMessage) => {
+  //созадим функцию котороую прокинем через пропсы к кнопке(эта функция добаввляет новый пост )
+  let newPost = {
+    id: 5,
+    messages: postMessage,
+    likesCount: 0,
+  };
+  state.profilePage.posts.push(newPost); //пушим в массив в конец массива
+};
+
 export default state;
