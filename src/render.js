@@ -6,10 +6,18 @@ import App from "./App";
 import { addPost } from "./redux/state";
 import reportWebVitals from "./reportWebVitals";
 import state from "./redux/state";
-import { rerenderEntireTree } from "./render";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
+export let rerenderEntireTree = () => {
+  // создали функцию что бы перересовать дерево заново ui
+  root.render(
+    <BrowserRouter>
+      <React.StrictMode>
+        <App state={state} addPost={addPost} />
+      </React.StrictMode>
+    </BrowserRouter>
+  );
+};
 rerenderEntireTree(); // нужно вызывать функцию в state чтобы после изменения данных сразу перересовать дерево,но мы не можем --> <-- import не должна быть циклическая зависимость
 
 // If you want to start measuring performance in your app, pass a function
