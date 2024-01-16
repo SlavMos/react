@@ -1,9 +1,12 @@
+import { rerenderEntireTree } from "../render";
+
 let state = {
   profilePage: {
     posts: [
       { id: 0, messages: "Hello how are you", likesCount: 1 },
       { id: 1, messages: "Hyyyy,okay", likesCount: 15 },
     ],
+    newPostText: "TEXT V TEXT AREA",
   },
 
   messagesPage: {
@@ -33,6 +36,14 @@ export let addPost = (postMessage) => {
     likesCount: 0,
   };
   state.profilePage.posts.push(newPost); //пушим в массив в конец массива
+  rerenderEntireTree(state);
+};
+
+export let updateNewPostText = (newText) => {
+  //созадим функцию котороую прокинем через пропсы к textarea(эта функция изменяет текст внутри textarea)
+
+  state.profilePage.newPostText = newText; //добавляет в newPostTex то что пишем в textarea
+  rerenderEntireTree(state);
 };
 
 export default state;

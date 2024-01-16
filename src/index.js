@@ -10,7 +10,7 @@ import { rerenderEntireTree } from "./render";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-rerenderEntireTree(); // нужно вызывать функцию в state чтобы после изменения данных сразу перересовать дерево,но мы не можем --> <-- import не должна быть циклическая зависимость
+rerenderEntireTree(state); // нужно вызывать функцию в state чтобы после изменения данных сразу перересовать дерево,но мы не можем --> <-- import не должна быть циклическая зависимость
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

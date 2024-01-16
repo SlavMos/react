@@ -13,13 +13,23 @@ const MyPost = (props) => {
     //создаем функцию которую поставим на баттон(onclick) что бы она выполнилась при нажатии
     let text = newPostElement.current.value; // ПОКАЗЫВАЕТ ЗНАЧЕНИЕ ТЕКСТАРЕА
     props.addPost(text); // прокинули через state функцию которая добавляет посты(то что пишем в let text добавляеется в функцию из state)
+    props.updateNewPostText(""); //после добавления поста удаляется текст из texarea
+  };
+
+  let onPostChange = () => {
+    let text = newPostElement.current.value; // cоздали функцию которая меняет value в textarea
+    props.updateNewPostText(text); //updateNewPostText = функция которая приходит из  state
   };
 
   return (
     <div className={s.MyPost}>
       posts
       <div>
-        <textarea ref={newPostElement}></textarea>
+        <textarea
+          ref={newPostElement} //ссылка чтобы мы могли обратиться к нему
+          value={props.newPostElement} // значение приходит из state
+          onChange={onPostChange} // что бы могли менять текст внутри
+        ></textarea>
         {/* добавили ссылку на
         textarea что бы могли обратиться к нему */}
         <button
