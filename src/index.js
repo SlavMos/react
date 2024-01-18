@@ -3,12 +3,33 @@ import { BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { addPost } from "./redux/state";
+import {
+  addMessage,
+  addPost,
+  changeNewMessage,
+  updateNewPostText,
+} from "./redux/state";
 import reportWebVitals from "./reportWebVitals";
 import state from "./redux/state";
-import { rerenderEntireTree } from "./render";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+let rerenderEntireTree = (state) => {
+  // создали функцию что бы перересовать дерево заново ui
+  root.render(
+    <BrowserRouter>
+      <React.StrictMode>
+        <App
+          state={state}
+          addPost={addPost}
+          addMessage={addMessage}
+          changeNewMessage={changeNewMessage}
+          updateNewPostText={updateNewPostText}
+        />
+      </React.StrictMode>
+    </BrowserRouter>
+  );
+};
 
 rerenderEntireTree(state); // нужно вызывать функцию в state чтобы после изменения данных сразу перересовать дерево,но мы не можем --> <-- import не должна быть циклическая зависимость
 
