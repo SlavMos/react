@@ -1,5 +1,5 @@
 let rerenderEntireTree = () => {
-  console.log("fsdfds");
+  //создали функцию с тем же именем что бы дать ему original function from state чтобы рендерили страницу
 };
 
 let state = {
@@ -31,7 +31,9 @@ let state = {
   },
 };
 
-export let addPost = (postMessage) => {
+window.state = state;
+
+export const addPost = (postMessage) => {
   //созадим функцию котороую прокинем через пропсы к кнопке(эта функция добаввляет новый пост )
   let newPost = {
     id: 5,
@@ -42,14 +44,14 @@ export let addPost = (postMessage) => {
   rerenderEntireTree(state);
 };
 
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
   //созадим функцию котороую прокинем через пропсы к textarea(эта функция изменяет текст внутри textarea)
 
   state.profilePage.newPostText = newText; //добавляет в newPostTex то что пишем в textarea
   rerenderEntireTree(state);
 };
 
-export let addMessage = (dialogMessages) => {
+export const addMessage = (dialogMessages) => {
   let newMessage = {
     id: 6,
     message: dialogMessages,
@@ -58,9 +60,14 @@ export let addMessage = (dialogMessages) => {
   rerenderEntireTree(state);
 };
 
-export let changeNewMessage = (newMessage) => {
+export const changeNewMessage = (newMessage) => {
   state.messagesPage.newMessage = newMessage;
   rerenderEntireTree(state);
+};
+
+export const subscribe = (observer) => {
+  //создали функцию которую вызовим в state и передадим ему функцию  rerender (subscribe(rerender))
+  rerenderEntireTree = observer;
 };
 
 export default state;

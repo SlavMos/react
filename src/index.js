@@ -7,6 +7,7 @@ import {
   addMessage,
   addPost,
   changeNewMessage,
+  subscribe,
   updateNewPostText,
 } from "./redux/state";
 import reportWebVitals from "./reportWebVitals";
@@ -32,7 +33,7 @@ let rerenderEntireTree = (state) => {
 };
 
 rerenderEntireTree(state); // нужно вызывать функцию в state чтобы после изменения данных сразу перересовать дерево,но мы не можем --> <-- import не должна быть циклическая зависимость
-
+subscribe(rerenderEntireTree); //функция вызвана из state что бы дать ему rerender
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
