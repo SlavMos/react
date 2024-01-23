@@ -23,10 +23,7 @@ let rerenderEntireTree = (state) => {
       <React.StrictMode>
         <App
           state={store.getState()} // cтавим () потому что мы вызываем метод в котором state
-          addPost={store.addPost.bind(store)} // связываем метод add post s storom что бы ощибок не было
-          addMessage={store.addMessage.bind(store)}
-          changeNewMessage={store.changeNewMessage.bind(store)}
-          updateNewPostText={store.updateNewPostText.bind(store)}
+          dispatch={store.dispatch.bind(store)} // связываем метод dispatch s storom что бы ошибок не было
         />
       </React.StrictMode>
     </BrowserRouter>

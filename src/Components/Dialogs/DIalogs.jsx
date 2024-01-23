@@ -7,7 +7,7 @@ import { addPost } from "../../redux/state";
 const Dialogs = (props) => {
   console.log(props);
   let dialogsElement = props.state?.dialogsData?.map((dialog) => (
-    <DialogItem name={dialog.name} id={dialog.id} /> //map. метод который превращает массив в новый массив,сделали для того что бы каждый раз не добавляли компонент
+    <DialogItem name={dialog.name} id={dialog.id} /> //map. метод который превращает массив в новый массив,сделали для того что бы каждый раз не добавляли компонент name={dialog.names} = name eto props peredaem
   ));
 
   let messegesElement = props.state?.messegesData?.map((messeg) => (
@@ -18,12 +18,12 @@ const Dialogs = (props) => {
 
   let addMessage = () => {
     let text = newText.current.value;
-    props.addMessage(text);
-    props.changeNewMessage("");
+    props.dispatch({ type: "ADD-MESSAGE", dialogMessages: text });
+    props.dispatch({ type: "CHANGE-NEW-MESSAGE", newMessage: "" });
   };
   let changeText = () => {
     let text = newText.current.value;
-    props.changeNewMessage(text);
+    props.dispatch({ type: "CHANGE-NEW-MESSAGE", newMessage: text });
   };
 
   return (

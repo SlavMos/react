@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./MyPost.module.css";
 import Post from "./Posts/Post";
+import { type } from "@testing-library/user-event/dist/type";
 
 const MyPost = (props) => {
   let postsElement = props.posts.map((p) => (
@@ -12,13 +13,13 @@ const MyPost = (props) => {
   let addPost = () => {
     //создаем функцию которую поставим на баттон(onclick) что бы она выполнилась при нажатии
     // ПОКАЗЫВАЕТ ЗНАЧЕНИЕ ТЕКСТАРЕА
-    props.addPost(); // прокинули через state функцию которая добавляет посты(то что пишем в let text добавляеется в функцию из state)
-    props.updateNewPostText(""); //после добавления поста удаляется текст из texarea
+    props.dispatch({ type: "ADD-POST" }); // прокинули через state функцию которая добавляет посты(то что пишем в let text добавляеется в функцию из state)
+    props.dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: "" }); //после добавления поста удаляется текст из texarea
   };
 
   let onPostChange = () => {
     let text = newPostElement.current.value; // cоздали функцию которая меняет value в textarea
-    props.updateNewPostText(text); //updateNewPostText = функция которая приходит из  state
+    props.dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: text }); //updateNewPostText = функция которая приходит из  state
   };
 
   return (
@@ -28,7 +29,7 @@ const MyPost = (props) => {
         <textarea
           ref={newPostElement} //ссылка чтобы мы могли обратиться к нему
           value={props.newPostElement} // значение приходит из state
-          onChange={onPostChange} // что бы могли менять текст внутри
+          onChange={onPostChange} // что бы могли менять текст внутри(когда изменяеися текст ареа применяется onpostChange)
         ></textarea>
         {/* добавили ссылку на
         textarea что бы могли обратиться к нему */}
