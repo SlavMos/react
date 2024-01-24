@@ -50,6 +50,7 @@ let store = {
   // ЧТОБЫ МНОГО РАЗ НЕ ВЫЗЫВАТЬ МЕТОДЫ(ФУНКЦИИ) КОТОРЫЕ ЧТО ТО ИЗМЕНЯЮТ В UI(state) МЫ СОЗДАДИМ ОДИН МЕТОД В КОТОРОМ ДОБАВИМ ВСЕ МЕТОДЫ И БУДЕМ ВЫЗЫЫВАТЬ ТОЛЬКО ОДИН
 
   dispatch(action) {
+    //action-объект
     // у actioona объязательно должен быть type  {type:}
     if (action.type === "ADD-POST") {
       //МЫ КОПИРОВАЛИ ФУНКЦИЮ ADDPOST
@@ -105,6 +106,35 @@ let store = {
   //   this._state.messagesPage.newMessage = newMessage;
   //   this.rerenderEntireTree(this._state);
   // },
+};
+
+//ЧТОБЫ ДОЛГО НЕ ПИСАЛИ ACTION СОЗДАДИМ ФУНКЦИЮ И ПЕРЕКИНЕМ В STATE ОТТУДА СДЕЛАЕМ ЕХПОРТ И ВСТАВИМ В dispatch
+
+export const addMessageActionCreator = (text) => {
+  return {
+    type: "ADD-MESSAGE",
+    dialogMessages: text,
+  };
+};
+
+export const changeNewMessageActionCreator = (text) => {
+  return {
+    type: "CHANGE-NEW-MESSAGE",
+    newMessage: text,
+  };
+};
+
+export const addPostActionCreator = () => {
+  return {
+    type: "ADD-POST",
+  };
+};
+
+export const updateNewPostTextActionCreator = (text) => {
+  return {
+    type: "UPDATE-NEW-POST-TEXT",
+    newText: text,
+  };
 };
 
 export default store;

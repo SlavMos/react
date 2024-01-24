@@ -2,7 +2,12 @@ import React, { createRef } from "react";
 import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import { addPost } from "../../redux/state";
+import {
+  addMessageActionCreator,
+  addPost,
+  addPostActionCreator,
+  changeNewMessageActionCreator,
+} from "../../redux/state";
 
 const Dialogs = (props) => {
   console.log(props);
@@ -18,12 +23,18 @@ const Dialogs = (props) => {
 
   let addMessage = () => {
     let text = newText.current.value;
-    props.dispatch({ type: "ADD-MESSAGE", dialogMessages: text });
-    props.dispatch({ type: "CHANGE-NEW-MESSAGE", newMessage: "" });
+    //props.AddMessage(text);
+    //props.changeNewMessage(text);
+    //props.dispatch({ type: "ADD-MESSAGE", dialogMessages: text });
+    //ЧТОБЫ ДОЛГО НЕ ПИСАЛИ ACTION СОЗДАДИМ ФУНКЦИЮ И ПЕРЕКИНЕМ В STATE ОТТУДА СДЕЛАЕМ ЕХПОРТ И ВСТАВИТ ТУТ В ДИСПАТЧ
+    props.dispatch(addMessageActionCreator(text));
+    props.dispatch(changeNewMessageActionCreator(""));
   };
+
   let changeText = () => {
     let text = newText.current.value;
-    props.dispatch({ type: "CHANGE-NEW-MESSAGE", newMessage: text });
+    //props.changeNewMessage(text);
+    props.dispatch(changeNewMessageActionCreator(text));
   };
 
   return (

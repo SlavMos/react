@@ -2,6 +2,10 @@ import React from "react";
 import s from "./MyPost.module.css";
 import Post from "./Posts/Post";
 import { type } from "@testing-library/user-event/dist/type";
+import {
+  addPostActionCreator,
+  updateNewPostTextActionCreator,
+} from "../../../redux/state";
 
 const MyPost = (props) => {
   let postsElement = props.posts.map((p) => (
@@ -13,13 +17,14 @@ const MyPost = (props) => {
   let addPost = () => {
     //создаем функцию которую поставим на баттон(onclick) что бы она выполнилась при нажатии
     // ПОКАЗЫВАЕТ ЗНАЧЕНИЕ ТЕКСТАРЕА
-    props.dispatch({ type: "ADD-POST" }); // прокинули через state функцию которая добавляет посты(то что пишем в let text добавляеется в функцию из state)
-    props.dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: "" }); //после добавления поста удаляется текст из texarea
+    //ЧТОБЫ ДОЛГО НЕ ПИСАЛИ ACTION СОЗДАДИМ ФУНКЦИЮ И ПЕРЕКИНЕМ В STATE ОТТУДА СДЕЛАЕМ ЕХПОРТ И ВСТАВИТ ТУТ В ДИСПАТЧ
+    props.dispatch(addPostActionCreator); // прокинули через state функцию которая добавляет посты(то что пишем в let text добавляеется в функцию из state)
+    props.dispatch(updateNewPostTextActionCreator("")); //после добавления поста удаляется текст из texarea
   };
 
   let onPostChange = () => {
     let text = newPostElement.current.value; // cоздали функцию которая меняет value в textarea
-    props.dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: text }); //updateNewPostText = функция которая приходит из  state
+    props.dispatch(updateNewPostTextActionCreator(text)); //updateNewPostText = функция которая приходит из  state
   };
 
   return (
