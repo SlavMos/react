@@ -28,7 +28,7 @@ const Dialogs = (props) => {
     //props.dispatch({ type: "ADD-MESSAGE", dialogMessages: text });
     //ЧТОБЫ ДОЛГО НЕ ПИСАЛИ ACTION СОЗДАДИМ ФУНКЦИЮ И ПЕРЕКИНЕМ В STATE ОТТУДА СДЕЛАЕМ ЕХПОРТ И ВСТАВИТ ТУТ В ДИСПАТЧ
     props.dispatch(addMessageActionCreator(text));
-    props.dispatch(changeNewMessageActionCreator(""));
+    props.dispatch(changeNewMessageActionCreator("")); // обнуление после добавления поста
   };
 
   let changeText = () => {

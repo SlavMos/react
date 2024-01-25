@@ -13,7 +13,7 @@ let store = {
         { id: 0, messages: "Hello how are you", likesCount: 1 },
         { id: 1, messages: "Hyyyy,okay", likesCount: 15 },
       ],
-      newPostText: "",
+      newPostText: "sdf",
     },
 
     messagesPage: {
@@ -50,6 +50,8 @@ let store = {
   // ЧТОБЫ МНОГО РАЗ НЕ ВЫЗЫВАТЬ МЕТОДЫ(ФУНКЦИИ) КОТОРЫЕ ЧТО ТО ИЗМЕНЯЮТ В UI(state) МЫ СОЗДАДИМ ОДИН МЕТОД В КОТОРОМ ДОБАВИМ ВСЕ МЕТОДЫ И БУДЕМ ВЫЗЫЫВАТЬ ТОЛЬКО ОДИН
 
   dispatch(action) {
+    //
+    //REDUCER
     //action-объект
     // у actioona объязательно должен быть type  {type:}
     if (action.type === "ADD-POST") {
