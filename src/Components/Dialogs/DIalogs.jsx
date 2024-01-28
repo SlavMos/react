@@ -42,13 +42,12 @@ const Dialogs = (props) => {
       <div className={s.dialogsItems}>{dialogsElement}</div>
       <div className={s.messages}>{messegesElement}</div>
       <textarea
+        placeholder="Enter your message"
         ref={newText}
         onChange={changeText}
         value={props.state?.newMessage}
       ></textarea>
-      <button className={s.change} onClick={addMessage}>
-        d
-      </button>
+      <button className={s.change} onClick={addMessage}></button>
     </div>
   );
 };

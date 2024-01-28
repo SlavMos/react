@@ -1,6 +1,9 @@
 //ЗАРЕФАКТОРИМ НАШ STATE
 //НАША ЗАДАЧА ВСЕ ФУНКЦИИ И ВСЕ ПЕРЕМЕННЫЕ УПАКОВАТЬ В ОДИН ОБЪЕКТ
 
+import messagesReducer from "./messages-reducer";
+import profileeReducer from "./profile-reducer";
+
 //CОЗДАЕМ ОБЪЕКТ STORE
 
 let store = {
@@ -13,7 +16,7 @@ let store = {
         { id: 0, messages: "Hello how are you", likesCount: 1 },
         { id: 1, messages: "Hyyyy,okay", likesCount: 15 },
       ],
-      newPostText: "sdf",
+      newPostText: "",
     },
 
     messagesPage: {
@@ -32,7 +35,7 @@ let store = {
         { id: 4, message: "Good,and you?" },
         { id: 5, message: "Good thanks" },
       ],
-      newMessage: "blablsa",
+      newMessage: "",
     },
   },
   getState() {
@@ -47,9 +50,11 @@ let store = {
     //создали функцию которую вызовим в state и передадим ему функцию  rerender (subscribe(rerender))
     this.rerenderEntireTree = observer;
   },
-  // ЧТОБЫ МНОГО РАЗ НЕ ВЫЗЫВАТЬ МЕТОДЫ(ФУНКЦИИ) КОТОРЫЕ ЧТО ТО ИЗМЕНЯЮТ В UI(state) МЫ СОЗДАДИМ ОДИН МЕТОД В КОТОРОМ ДОБАВИМ ВСЕ МЕТОДЫ И БУДЕМ ВЫЗЫЫВАТЬ ТОЛЬКО ОДИН
 
+  // ЧТОБЫ МНОГО РАЗ НЕ ВЫЗЫВАТЬ МЕТОДЫ(ФУНКЦИИ) КОТОРЫЕ ЧТО ТО ИЗМЕНЯЮТ В UI(state) МЫ СОЗДАДИМ ОДИН МЕТОД В КОТОРОМ ДОБАВИМ ВСЕ МЕТОДЫ И БУДЕМ ВЫЗЫЫВАТЬ ТОЛЬКО ОДИН
   dispatch(action) {
+    profileeReducer = (this._state.profilePage, action);
+
     //
     //REDUCER
     //action-объект
