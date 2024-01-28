@@ -16,6 +16,7 @@ const profileeReducer = (state, action) => {
   } else if (action.type === "UPDATE-NEW-POST-TEXT") {
     state.newPostText = action.newText; //добавляет в newPostTex то что пишем в textarea
   }
+  return state;
 };
 
 export default profileeReducer;

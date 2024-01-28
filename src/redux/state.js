@@ -53,36 +53,37 @@ let store = {
 
   // ЧТОБЫ МНОГО РАЗ НЕ ВЫЗЫВАТЬ МЕТОДЫ(ФУНКЦИИ) КОТОРЫЕ ЧТО ТО ИЗМЕНЯЮТ В UI(state) МЫ СОЗДАДИМ ОДИН МЕТОД В КОТОРОМ ДОБАВИМ ВСЕ МЕТОДЫ И БУДЕМ ВЫЗЫЫВАТЬ ТОЛЬКО ОДИН
   dispatch(action) {
-    profileeReducer = (this._state.profilePage, action);
-
+    profileeReducer(this._state.profilePage, action);
+    messagesReducer(this._state.messagesPage, action);
+    this.rerenderEntireTree(this._state);
     //
     //REDUCER
     //action-объект
     // у actioona объязательно должен быть type  {type:}
-    if (action.type === "ADD-POST") {
-      //МЫ КОПИРОВАЛИ ФУНКЦИЮ ADDPOST
-      //созадим функцию котороую прокинем через пропсы к кнопке(эта функция добаввляет новый пост )
-      let newPost = {
-        id: 5,
-        messages: this._state.profilePage.newPostText, //добавляем в посты то значение которою написали в textarera
-        likesCount: 0,
-      };
-      this._state.profilePage.posts.push(newPost); //пушим в массив в конец массива
-      this.rerenderEntireTree(this._state);
-    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
-      this._state.profilePage.newPostText = action.newText; //добавляет в newPostTex то что пишем в textarea
-      this.rerenderEntireTree(this._state);
-    } else if (action.type === "ADD-MESSAGE") {
-      let newMessage = {
-        id: 6,
-        message: action.dialogMessages,
-      };
-      this._state.messagesPage.messegesData.push(newMessage);
-      this.rerenderEntireTree(this._state);
-    } else if (action.type === "CHANGE-NEW-MESSAGE") {
-      this._state.messagesPage.newMessage = action.newMessage;
-      this.rerenderEntireTree(this._state);
-    }
+    // if (action.type === "ADD-POST") {
+    //   //МЫ КОПИРОВАЛИ ФУНКЦИЮ ADDPOST
+    //   //созадим функцию котороую прокинем через пропсы к кнопке(эта функция добаввляет новый пост )
+    //   let newPost = {
+    //     id: 5,
+    //     messages: this._state.profilePage.newPostText, //добавляем в посты то значение которою написали в textarera
+    //     likesCount: 0,
+    //   };
+    //   this._state.profilePage.posts.push(newPost); //пушим в массив в конец массива
+    //   this.rerenderEntireTree(this._state);
+    // } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+    //   this._state.profilePage.newPostText = action.newText; //добавляет в newPostTex то что пишем в textarea
+    //   this.rerenderEntireTree(this._state);
+    // } else if (action.type === "ADD-MESSAGE") {
+    //   let newMessage = {
+    //     id: 6,
+    //     message: action.dialogMessages,
+    //   };
+    //   this._state.messagesPage.messegesData.push(newMessage);
+    //   this.rerenderEntireTree(this._state);
+    // } else if (action.type === "CHANGE-NEW-MESSAGE") {
+    //   this._state.messagesPage.newMessage = action.newMessage;
+    //   this.rerenderEntireTree(this._state);
+    // }
   },
 
   // addPost(postMessage) {
