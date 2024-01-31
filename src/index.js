@@ -3,16 +3,16 @@ import { BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import store from "./redux/state";
+import store from "./redux/store";
 import {
   addMessage,
   addPost,
   changeNewMessage,
   subscribe,
   updateNewPostText,
-} from "./redux/state";
+} from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
-import state from "./redux/state";
+import state from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

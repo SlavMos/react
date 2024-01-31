@@ -7,7 +7,7 @@ import {
   addPost,
   addPostActionCreator,
   changeNewMessageActionCreator,
-} from "../../redux/state";
+} from "../../redux/messages-reducer";
 
 const Dialogs = (props) => {
   console.log(props);

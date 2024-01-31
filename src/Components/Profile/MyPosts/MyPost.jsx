@@ -5,7 +5,7 @@ import { type } from "@testing-library/user-event/dist/type";
 import {
   addPostActionCreator,
   updateNewPostTextActionCreator,
-} from "../../../redux/state";
+} from "../../../redux/profile-reducer";
 
 const MyPost = (props) => {
   let postsElement = props.posts.map((p) => (
@@ -33,7 +33,7 @@ const MyPost = (props) => {
       <div>
         <textarea
           ref={newPostElement} //ссылка чтобы мы могли обратиться к нему
-          value={props.newPostElement} // значение приходит из state
+          value={props.newPostText} // значение приходит из state
           onChange={onPostChange} // что бы могли менять текст внутри(когда изменяеися текст ареа применяется onpostChange)
         ></textarea>
         {/* добавили ссылку на

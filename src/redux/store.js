@@ -35,7 +35,7 @@ let store = {
         { id: 4, message: "Good,and you?" },
         { id: 5, message: "Good thanks" },
       ],
-      newMessage: "",
+      newMessage: "sss",
     },
   },
   getState() {
@@ -43,7 +43,7 @@ let store = {
     return this._state; // к свойствам обращаемся через this
   },
   //функции превращаем в методы уьираем let  = =>
-  rerenderEntireTree() {
+  rerenderEntireTree(state) {
     //создали функцию с тем же именем что бы дать ему original function from state чтобы рендерили страницу
   },
   subscribe(observer) {
@@ -116,33 +116,33 @@ let store = {
   // },
 };
 
-//ЧТОБЫ ДОЛГО НЕ ПИСАЛИ ACTION СОЗДАДИМ ФУНКЦИЮ И ПЕРЕКИНЕМ В STATE ОТТУДА СДЕЛАЕМ ЕХПОРТ И ВСТАВИМ В dispatch
+//ЧТОБЫ ДОЛГО НЕ ПИСАЛИ ACTION СОЗДАДИМ ФУНКЦИЮ И  СДЕЛАЕМ ЕХПОРТ И ВСТАВИМ В dispatch
 
-export const addMessageActionCreator = (text) => {
-  return {
-    type: "ADD-MESSAGE",
-    dialogMessages: text,
-  };
-};
+// export const addMessageActionCreator = (text) => {
+//   return {
+//     type: "ADD-MESSAGE",
+//     dialogMessages: text,
+//   };
+// };
 
-export const changeNewMessageActionCreator = (text) => {
-  return {
-    type: "CHANGE-NEW-MESSAGE",
-    newMessage: text,
-  };
-};
+// export const changeNewMessageActionCreator = (text) => {
+//   return {
+//     type: "CHANGE-NEW-MESSAGE",
+//     newMessage: text,
+//   };
+// };
 
-export const addPostActionCreator = () => {
-  return {
-    type: "ADD-POST",
-  };
-};
+// export const addPostActionCreator = () => {
+//   return {
+//     type: "ADD-POST",
+//   };
+// };
 
-export const updateNewPostTextActionCreator = (text) => {
-  return {
-    type: "UPDATE-NEW-POST-TEXT",
-    newText: text,
-  };
-};
+// export const updateNewPostTextActionCreator = (text) => {
+//   return {
+//     type: "UPDATE-NEW-POST-TEXT",
+//     newText: text,
+//   };
+// };
 
 export default store;

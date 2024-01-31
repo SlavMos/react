@@ -1,4 +1,4 @@
-//ДЛЯ ТОГО ЧТО БЫ МНОГО METODOV V DISPATCH(ACTION) МЫ СОЗДАЕМ REDUCER
+//ДЛЯ ТОГО ЧТО БЫ НЕ БЫЛО МНОГО METODOV V DISPATCH(ACTION) МЫ СОЗДАЕМ REDUCER
 //REDUCER-ЖТО ЧИСТАЯ ФУНКЦИЯ КОТОРАЯ ПРИНИМАЕТ STATE AND ACTION,ЕСЛИ НУЖНО ОН ИЗМЕНЯЕТ STATE И ВЕРНЕТ НОВЫЙ В STATE,ИНАЧЕ ОН ОСТАВИТ СТАРЫЙ
 //У КАЖДОГО ЧАСТЯ STATE СВОЙ РЕДЮСЕР
 const profileeReducer = (state, action) => {
@@ -17,6 +17,20 @@ const profileeReducer = (state, action) => {
     state.newPostText = action.newText; //добавляет в newPostTex то что пишем в textarea
   }
   return state;
+};
+
+//ЧТОБЫ ДОЛГО НЕ ПИСАЛИ ACTION СОЗДАДИМ ФУНКЦИЮ (ACTION) И  СДЕЛАЕМ ЕХПОРТ И ВСТАВИМ В dispatch
+export const addPostActionCreator = () => {
+  return {
+    type: "ADD-POST",
+  };
+};
+
+export const updateNewPostTextActionCreator = (text) => {
+  return {
+    type: "UPDATE-NEW-POST-TEXT",
+    newText: text,
+  };
 };
 
 export default profileeReducer;
