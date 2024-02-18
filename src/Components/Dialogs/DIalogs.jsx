@@ -10,12 +10,11 @@ import {
 } from "../../redux/messages-reducer";
 
 const Dialogs = (props) => {
-  console.log(props);
-  let dialogsElement = props.state?.dialogsData?.map((dialog) => (
+  let dialogsElement = (props.state?.dialogsData || []).map((dialog) => (
     <DialogItem name={dialog.name} id={dialog.id} /> //map. метод который превращает массив в новый массив,сделали для того что бы каждый раз не добавляли компонент name={dialog.names} = name eto props peredaem
   ));
 
-  let messegesElement = props.state?.messegesData?.map((messeg) => (
+  let messegesElement = (props.state?.messegesData || []).map((messeg) => (
     <Message message={messeg.message} /> // <Message message={messeg.message} /> message statin danninerun michi messagne/messegna mapin hamare
   ));
 

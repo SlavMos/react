@@ -8,7 +8,7 @@ import {
 } from "../../../redux/profile-reducer";
 
 const MyPost = (props) => {
-  let postsElement = props.posts.map((p) => (
+  let postsElement = (props.posts || []).map((p) => (
     <Post messages={p.messages} likesCount={p.likesCount} /> // при помощи map сосдаем новый массив который будет все элементы из старого(для того чтобы много раз не добавлять компонету)
   ));
 

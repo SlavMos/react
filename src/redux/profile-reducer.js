@@ -1,7 +1,15 @@
 //ДЛЯ ТОГО ЧТО БЫ НЕ БЫЛО МНОГО METODOV V DISPATCH(ACTION) МЫ СОЗДАЕМ REDUCER
 //REDUCER-ЖТО ЧИСТАЯ ФУНКЦИЯ КОТОРАЯ ПРИНИМАЕТ STATE AND ACTION,ЕСЛИ НУЖНО ОН ИЗМЕНЯЕТ STATE И ВЕРНЕТ НОВЫЙ В STATE,ИНАЧЕ ОН ОСТАВИТ СТАРЫЙ
 //У КАЖДОГО ЧАСТЯ STATE СВОЙ РЕДЮСЕР
-const profileeReducer = (state, action) => {
+let initialState = {
+  posts: [
+    { id: 0, messages: "Hello how are you", likesCount: 1 },
+    { id: 1, messages: "Hyyyy,okay", likesCount: 15 },
+  ],
+  newPostText: "",
+};
+
+const profileReducer = (state = initialState, action) => {
   //action-объект
   // у actioona объязательно должен быть type  {type:}
   if (action.type === "ADD-POST") {
@@ -33,4 +41,4 @@ export const updateNewPostTextActionCreator = (text) => {
   };
 };
 
-export default profileeReducer;
+export default profileReducer;
