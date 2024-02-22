@@ -18,13 +18,13 @@ const MyPost = (props) => {
     //создаем функцию которую поставим на баттон(onclick) что бы она выполнилась при нажатии
     // ПОКАЗЫВАЕТ ЗНАЧЕНИЕ ТЕКСТАРЕА
     //ЧТОБЫ ДОЛГО НЕ ПИСАЛИ ACTION СОЗДАДИМ ФУНКЦИЮ И ПЕРЕКИНЕМ В STATE ОТТУДА СДЕЛАЕМ ЕХПОРТ И ВСТАВИТ ТУТ В ДИСПАТЧ
-    props.dispatch(addPostActionCreator()); // прокинули через state функцию которая добавляет посты(то что пишем в let text добавляеется в функцию из state)
-    props.dispatch(updateNewPostTextActionCreator("")); //после добавления поста удаляется текст из texarea
+    props.addPostActionCreator(); // прокинули через state функцию которая добавляет посты(то что пишем в let text добавляеется в функцию из state)
+    props.updateNewPostTextActionCreator("");
   };
 
   let onPostChange = () => {
     let text = newPostElement.current.value; // cоздали функцию которая меняет value в textarea
-    props.dispatch(updateNewPostTextActionCreator(text)); //updateNewPostText = функция которая приходит из  state
+    props.updateNewPostTextActionCreator(text);
   };
 
   return (

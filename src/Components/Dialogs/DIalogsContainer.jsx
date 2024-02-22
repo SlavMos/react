@@ -8,47 +8,42 @@ import {
   addPostActionCreator,
   changeNewMessageActionCreator,
 } from "../../redux/messages-reducer";
+import Dialogs from "./DIalogs";
 
-const Dialogs = (props) => {
-  let dialogsElement = (props.dialogsData || []).map((dialog) => (
+const DialogsContainer = (props) => {
+  let dialogsElement = (props.state?.dialogsData || []).map((dialog) => (
     <DialogItem name={dialog.name} id={dialog.id} /> //map. метод который превращает массив в новый массив,сделали для того что бы каждый раз не добавляли компонент name={dialog.names} = name eto props peredaem
   ));
 
-  let messegesElement = (props.messegesData || []).map((messeg) => (
+  let messegesElement = (props.state?.messegesData || []).map((messeg) => (
     <Message message={messeg.message} /> // <Message message={messeg.message} /> message statin danninerun michi messagne/messegna mapin hamare
   ));
 
   let newText = React.createRef();
 
-  let addMessage = () => {
-    let text = newText.current.value;
+  let addMessage = (text) => {
     //props.AddMessage(text);
     //props.changeNewMessage(text);
     //props.dispatch({ type: "ADD-MESSAGE", dialogMessages: text });
     //ЧТОБЫ ДОЛГО НЕ ПИСАЛИ ACTION СОЗДАДИМ ФУНКЦИЮ И ПЕРЕКИНЕМ В STATE ОТТУДА СДЕЛАЕМ ЕХПОРТ И ВСТАВИТ ТУТ В ДИСПАТЧ
-    props.addMessageActionCreator(text);
-    props.changeNewMessageActionCreator(""); // обнуление после добавления поста
+    props.dispatch(addMessageActionCreator(text));
+    props.dispatch(changeNewMessageActionCreator("")); // обнуление после добавления поста
   };
 
-  let changeText = () => {
-    let text = newText.current.value;
+  let changeText = (text) => {
     //props.changeNewMessage(text);
-    props.changeNewMessageActionCreator(text);
+    props.dispatch(changeNewMessageActionCreator(text));
   };
 
   return (
-    <div className={s.dialogs}>
-      <div className={s.dialogsItems}>{dialogsElement}</div>
-      <div className={s.messages}>{messegesElement}</div>
-      <textarea
-        placeholder="Enter your message"
-        ref={newText}
-        onChange={changeText}
-        value={props.value}
-      ></textarea>
-      <button className={s.change} onClick={addMessage}></button>
-    </div>
+    <Dialogs
+      addMessageActionCreator={addMessage}
+      changeNewMessageActionCreator={changeText}
+      dialogsData={props.state.dialogsData}
+      messegesData={props.state.messegesData}
+      value={props.state.newMessage}
+    />
   );
 };
 
-export default Dialogs;
+export default DialogsContainer;

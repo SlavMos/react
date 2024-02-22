@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import Nav from "./Components/Nav/Nav";
 import Profile from "./Components/Profile/Profile";
-import Dialogs from "./Components/Dialogs/DIalogs";
+import DialogsContainer from "./Components/Dialogs/DIalogsContainer";
 import News from "./Components/News/News";
 const App = (props) => {
   return (
@@ -21,6 +21,7 @@ const App = (props) => {
               <Profile
                 profilePage={props.state.profilePage}
                 dispatch={props.dispatch}
+                store={props.store}
               />
             }
           />
@@ -30,13 +31,14 @@ const App = (props) => {
               <Profile
                 profilePage={props.state.profilePage}
                 dispatch={props.dispatch}
+                store={props.store}
               />
             }
           />
           <Route
             path="/dialogs/*"
             element={
-              <Dialogs
+              <DialogsContainer
                 state={props.state.messagesPage}
                 dispatch={props.dispatch}
               />
