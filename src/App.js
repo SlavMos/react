@@ -19,9 +19,9 @@ const App = (props) => {
             path="/profile"
             element={
               <Profile
-                profilePage={props.state.profilePage}
-                dispatch={props.dispatch}
-                store={props.store}
+              // profilePage={props.state.profilePage}
+              // dispatch={props.dispatch}
+              // store={props.store}
               />
             }
           />
@@ -29,9 +29,9 @@ const App = (props) => {
             path="/"
             element={
               <Profile
-                profilePage={props.state.profilePage}
-                dispatch={props.dispatch}
-                store={props.store}
+              // profilePage={props.state.profilePage}
+              // dispatch={props.dispatch}
+              // store={props.store}
               />
             }
           />
@@ -39,8 +39,8 @@ const App = (props) => {
             path="/dialogs/*"
             element={
               <DialogsContainer
-                state={props.state.messagesPage}
-                dispatch={props.dispatch}
+              // state={props.state.messagesPage}
+              // dispatch={props.dispatch}
               />
             }
           />

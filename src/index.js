@@ -13,6 +13,7 @@ import store from "./redux/redux-store";
 //   updateNewPostText,
 // } from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
+import StoreContext from "./redux/StoreContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -20,12 +21,16 @@ let rerenderEntireTree = (state) => {
   // создали функцию что бы перересовать дерево заново ui
   root.render(
     <BrowserRouter>
-      <React.StrictMode>
-        <App
-          state={store.getState()} // cтавим () потому что мы вызываем метод в котором state
-          dispatch={store.dispatch.bind(store)} // связываем метод dispatch s storom что бы ошибок не было
-        />
-      </React.StrictMode>
+      {/* StoreContext-нужно чтобы мы туда дали store и не прокидывали все через пропсы */}
+      <StoreContext.Provider value={store}>
+        <React.StrictMode>
+          <App
+          // state={store.getState()} // cтавим () потому что мы вызываем метод в котором state
+          // dispatch={store.dispatch.bind(store)}
+          // store={store} // связываем метод dispatch s storom что бы ошибок не было
+          />
+        </React.StrictMode>
+      </StoreContext.Provider>
     </BrowserRouter>
   );
 };
